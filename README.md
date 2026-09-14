@@ -4,6 +4,8 @@ Interactive wrapper for `aircrack-ng`. Pick a wordlist and a capture file from a
 
 [简体中文说明](README.zh-CN.md)
 
+> **Disclaimer**: This tool is for educational, testing, and security-research purposes only. Unauthorized cracking of WiFi networks is illegal. You are solely responsible for how you use it. Never use it against networks you do not own or lack explicit permission to test.
+
 ## Features
 
 - Menu-driven wordlist selection, optionally showing only lists that contain 8+ char passwords
