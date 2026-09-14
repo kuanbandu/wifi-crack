@@ -15,8 +15,13 @@ Interactive wrapper for `aircrack-ng`. Pick a wordlist and a capture file from a
 
 ## Usage
 
+Two script versions (same features, different UI language):
+
+- `wifi_crack.sh` — English UI
+- `wifi_crack_zh.sh` — Simplified Chinese UI
+
 ```bash
-./wifi_crack.sh
+./wifi_crack.sh        # or ./wifi_crack_zh.sh
 ```
 
 Menu:

@@ -15,8 +15,13 @@
 
 ## 使用
 
+脚本有两个版本（功能相同，界面语言不同）：
+
+- `wifi_crack.sh` — 英文界面
+- `wifi_crack_zh.sh` — 简体中文界面
+
 ```bash
-./wifi_crack.sh
+./wifi_crack.sh        # 或 ./wifi_crack_zh.sh
 ```
 
 菜单：
