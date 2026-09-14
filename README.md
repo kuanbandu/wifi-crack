@@ -32,9 +32,9 @@ On first run you'll be asked to enter the wordlist directory and the capture dir
 Example:
 
 ```bash
-=== 请配置目录 ===
-密码库文件夹路径: /home/kali/Desktop/wordlists
-cap抓包文件夹路径: /home/kali/Desktop/cap
+=== Configure directories ===
+Wordlist directory: /home/kali/Desktop/wordlists
+Cap capture directory: /home/kali/Desktop/cap
 ```
 
 Delete `~/.config/wifi-crack.conf` to re-run the setup wizard.
