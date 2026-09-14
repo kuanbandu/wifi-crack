@@ -1,7 +1,29 @@
 #!/bin/bash
 
-WORDLIST_DIR="/home/kali/Desktop/wordlists"
-CAP_DIR="/home/kali/Desktop/cap"
+CONFIG_FILE="$HOME/.config/wifi-crack.conf"
+
+setup_dirs() {
+    echo "=== 请配置目录 ==="
+    while true; do
+        read -p "密码库文件夹路径: " WORDLIST_DIR
+        read -p "cap抓包文件夹路径: " CAP_DIR
+        WORDLIST_DIR="${WORDLIST_DIR/#\~/$HOME}"
+        CAP_DIR="${CAP_DIR/#\~/$HOME}"
+        if [ -d "$WORDLIST_DIR" ] && [ -d "$CAP_DIR" ]; then
+            break
+        fi
+        echo "目录不存在，请重新输入"
+    done
+    mkdir -p "$(dirname "$CONFIG_FILE")"
+    printf 'WORDLIST_DIR="%s"\nCAP_DIR="%s"\n' "$WORDLIST_DIR" "$CAP_DIR" > "$CONFIG_FILE"
+    echo "目录配置已保存到 $CONFIG_FILE"
+}
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    setup_dirs
+else
+    source "$CONFIG_FILE"
+fi
 
 CURRENT_FILES=()
 
@@ -41,18 +63,14 @@ get_file_by_index() {
     echo "${CURRENT_FILES[$((idx-1))]}"
 }
 
-get_file_by_index() {
-    local idx=$1
-    echo "${CURRENT_FILES[$((idx-1))]}"
-}
-
 while true; do
     echo ""
     echo "=== WiFi 密码破解工具 ==="
     echo "1) 选择字典文件"
     echo "2) 选择 cap 文件"
     echo "3) 执行破解"
-    echo "4) 退出"
+    echo "4) 修改目录配置"
+    echo "5) 退出"
     
     read -p "请选择: " opt
     
@@ -106,6 +124,9 @@ while true; do
             wait $pid 2>/dev/null
             ;;
         4)
+            setup_dirs
+            ;;
+        5)
             exit 0
             ;;
         *)
